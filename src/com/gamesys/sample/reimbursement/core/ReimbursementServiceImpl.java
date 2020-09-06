@@ -14,10 +14,7 @@ public class ReimbursementServiceImpl implements ReimbursementService {
 
     @Override
     public void reimburse(String itemName, BigDecimal amount, String receiptUrl) {
-        Reimbursement reimbursement = new Reimbursement();
-        reimbursement.setItemName(itemName);
-        reimbursement.setAmount(amount);
-        reimbursement.setReceiptUrl(receiptUrl);
+        Reimbursement reimbursement = new Reimbursement(itemName, amount, receiptUrl);
         reimbursementGateway.save(reimbursement);
         receiptGateway.save(receiptUrl);
     }

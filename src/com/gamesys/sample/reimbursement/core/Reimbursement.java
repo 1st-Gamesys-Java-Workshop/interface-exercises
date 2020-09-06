@@ -8,6 +8,12 @@ public class Reimbursement {
     private BigDecimal amount;
     private String receiptUrl;
 
+    public Reimbursement(String itemName, BigDecimal amount, String receiptUrl) {
+        this.itemName = itemName;
+        this.amount = amount;
+        this.receiptUrl = receiptUrl;
+    }
+
     public String getItemName() {
         return itemName;
     }
