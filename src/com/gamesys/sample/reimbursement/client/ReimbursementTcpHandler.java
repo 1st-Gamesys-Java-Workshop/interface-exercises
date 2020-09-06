@@ -1,6 +1,7 @@
 package com.gamesys.sample.reimbursement.client;
 
 import com.gamesys.sample.reimbursement.core.ReimbursementService;
+import com.gamesys.sample.reimbursement.utils.InputUtils;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -33,11 +34,12 @@ public class ReimbursementTcpHandler implements Runnable {
 
         String input = getInput();
 
-        if (!input.isEmpty()) {
+        if (!InputUtils.isValid(input)) {
             String[] data = input.split(",");
-
-            reimbursementService.reimburse(data[0], new BigDecimal(data[1]), data[2]);
-            printWriter.println("Reimbursement saved!");
+            if (InputUtils.isAnAmount(data[1])) {
+                reimbursementService.reimburse(data[0], new BigDecimal(data[1]), data[2]);
+                printWriter.println("Reimbursement saved!");
+            }
         }
     }
 

@@ -1,6 +1,7 @@
 package com.gamesys.sample.reimbursement.client;
 
 import com.gamesys.sample.reimbursement.core.ReimbursementService;
+import com.gamesys.sample.reimbursement.utils.InputUtils;
 
 import java.math.BigDecimal;
 import java.util.NoSuchElementException;
@@ -17,7 +18,10 @@ public class ReimbursementCliClient {
 
     public void execute() {
         String itemName = getInputFor("Item name");
-        String amount = getInputFor("Amount");
+        String amount;
+        do {
+            amount = getInputFor("Amount");
+        } while (!InputUtils.isAnAmount(amount));
         String receiptUrl = getInputFor("Receipt URL");
 
         reimbursementService.reimburse(itemName, new BigDecimal(amount), receiptUrl);
@@ -29,7 +33,7 @@ public class ReimbursementCliClient {
         do {
             System.out.print("Enter " + fieldName + ": ");
             input = getInputValue();
-        } while (input.isEmpty());
+        } while (InputUtils.isValid(input));
 
         return input;
     }
