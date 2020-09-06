@@ -6,7 +6,7 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class ReimbursementTcpClient {
+public class ReimbursementTcpClient implements ReimbursementClient {
 
     private final ReimbursementService reimbursementService;
 
@@ -14,6 +14,7 @@ public class ReimbursementTcpClient {
         this.reimbursementService = reimbursementService;
     }
 
+    @Override
     public void execute() {
         try (ServerSocket serverSocket = new ServerSocket(3300)) {
             do {

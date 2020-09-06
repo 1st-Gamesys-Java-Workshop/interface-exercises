@@ -1,5 +1,6 @@
 package com.gamesys.sample.reimbursement.exec;
 
+import com.gamesys.sample.reimbursement.client.ReimbursementClient;
 import com.gamesys.sample.reimbursement.client.ReimbursementTcpClient;
 import com.gamesys.sample.reimbursement.core.ReceiptGateway;
 import com.gamesys.sample.reimbursement.core.ReimbursementGateway;
@@ -15,7 +16,7 @@ public class ReimbursementTcpMain {
         ReceiptGateway receiptGateway = new ReceiptGatewayImpl();
         ReimbursementService reimbursementService = new ReimbursementServiceImpl(reimbursementGateway, receiptGateway);
 
-        ReimbursementTcpClient tcpClient = new ReimbursementTcpClient(reimbursementService);
+        ReimbursementClient tcpClient = new ReimbursementTcpClient(reimbursementService);
         tcpClient.execute();
     }
 

@@ -7,7 +7,7 @@ import java.math.BigDecimal;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
-public class ReimbursementCliClient {
+public class ReimbursementCliClient implements ReimbursementClient {
 
     private final ReimbursementService reimbursementService;
     private final Scanner inputScanner = new Scanner(System.in);
@@ -16,6 +16,7 @@ public class ReimbursementCliClient {
         this.reimbursementService = reimbursementService;
     }
 
+    @Override
     public void execute() {
         String itemName = getInputFor("Item name");
         String amount;
@@ -27,7 +28,8 @@ public class ReimbursementCliClient {
         reimbursementService.reimburse(itemName, new BigDecimal(amount), receiptUrl);
     }
 
-    private String getInputFor(String fieldName) {
+    @Override
+    public String getInputFor(String fieldName) {
         String input;
 
         do {
