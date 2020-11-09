@@ -34,7 +34,7 @@ public class ReimbursementTcpHandler implements Runnable {
 
         String input = getInput();
 
-        if (!InputUtils.isValid(input)) {
+        if (!ReimbursementClient.isValid(input)) {
             String[] data = input.split(",");
             if (InputUtils.isAnAmount(data[1])) {
                 reimbursementService.reimburse(data[0], new BigDecimal(data[1]), data[2]);

@@ -35,7 +35,7 @@ public class ReimbursementCliClient implements ReimbursementClient {
         do {
             System.out.print("Enter " + fieldName + ": ");
             input = getInputValue();
-        } while (InputUtils.isValid(input));
+        } while (ReimbursementClient.isValid(input));
 
         return input;
     }

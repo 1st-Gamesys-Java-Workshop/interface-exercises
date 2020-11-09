@@ -8,4 +8,8 @@ public interface ReimbursementClient {
         return null;
     }
 
+    static boolean isValid(String value) {
+        return value == null || value.isEmpty();
+    }
+
 }
