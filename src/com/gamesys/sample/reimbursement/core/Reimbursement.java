@@ -7,11 +7,21 @@ public class Reimbursement {
     private String itemName;
     private BigDecimal amount;
     private String receiptUrl;
+    private String bank;
+    private String accountNumber;
 
     public Reimbursement(String itemName, BigDecimal amount, String receiptUrl) {
         this.itemName = itemName;
         this.amount = amount;
         this.receiptUrl = receiptUrl;
+    }
+
+    public Reimbursement(String itemName, BigDecimal amount, String receiptUrl, String bank, String accountNumber) {
+        this.itemName = itemName;
+        this.amount = amount;
+        this.receiptUrl = receiptUrl;
+        this.bank = bank;
+        this.accountNumber = accountNumber;
     }
 
     public String getItemName() {
@@ -36,5 +46,13 @@ public class Reimbursement {
 
     public void setReceiptUrl(String receiptUrl) {
         this.receiptUrl = receiptUrl;
+    }
+
+    public String getBank() {
+        return bank;
+    }
+
+    public String getAccountNumber() {
+        return accountNumber;
     }
 }

@@ -1,6 +1,7 @@
 package com.gamesys.sample.reimbursement.client;
 
 import com.gamesys.sample.reimbursement.core.ReimbursementService;
+import com.gamesys.sample.reimbursement.core.ReimbursementWithBankService;
 import com.gamesys.sample.reimbursement.utils.InputUtils;
 
 import java.math.BigDecimal;
@@ -9,10 +10,10 @@ import java.util.Scanner;
 
 public class ReimbursementCliClient implements ReimbursementClient {
 
-    private final ReimbursementService reimbursementService;
+    private final ReimbursementWithBankService reimbursementService;
     private final Scanner inputScanner = new Scanner(System.in);
 
-    public ReimbursementCliClient(ReimbursementService reimbursementService) {
+    public ReimbursementCliClient(ReimbursementWithBankService reimbursementService) {
         this.reimbursementService = reimbursementService;
     }
 
@@ -25,7 +26,10 @@ public class ReimbursementCliClient implements ReimbursementClient {
         } while (!InputUtils.isAnAmount(amount));
         String receiptUrl = getInputFor("Receipt URL");
 
-        reimbursementService.reimburse(itemName, new BigDecimal(amount), receiptUrl);
+        String bank = getInputFor("Bank");
+        String accountNumber = getInputFor("Account Number");
+
+        reimbursementService.reimburseWithBank(itemName, new BigDecimal(amount), receiptUrl, bank, accountNumber);
     }
 
     @Override

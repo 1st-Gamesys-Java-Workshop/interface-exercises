@@ -2,7 +2,7 @@ package com.gamesys.sample.reimbursement.core;
 
 import java.math.BigDecimal;
 
-public class ReimbursementServiceImpl implements ReimbursementService {
+public class ReimbursementServiceImpl implements ReimbursementWithBankService {
 
     private final ReimbursementGateway reimbursementGateway;
     private final ReceiptGateway receiptGateway;
@@ -19,4 +19,8 @@ public class ReimbursementServiceImpl implements ReimbursementService {
         receiptGateway.save(receiptUrl);
     }
 
+    @Override
+    public void reimburseWithBank(String itemName, BigDecimal amount, String receiptUrl, String bank, String accountNumber) {
+
+    }
 }
