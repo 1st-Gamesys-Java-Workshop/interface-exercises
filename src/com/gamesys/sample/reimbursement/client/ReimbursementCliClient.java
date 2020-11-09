@@ -25,7 +25,10 @@ public class ReimbursementCliClient implements ReimbursementClient {
         } while (!InputUtils.isAnAmount(amount));
         String receiptUrl = getInputFor("Receipt URL");
 
-        reimbursementService.reimburse(itemName, new BigDecimal(amount), receiptUrl);
+        String bank = getInputFor("Bank");
+        String accountNumber = getInputFor("Account Number");
+
+        reimbursementService.reimburseWithBank(itemName, new BigDecimal(amount), receiptUrl, bank, accountNumber);
     }
 
     @Override

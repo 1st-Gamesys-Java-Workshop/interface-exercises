@@ -19,4 +19,10 @@ public class ReimbursementServiceImpl implements ReimbursementService {
         receiptGateway.save(receiptUrl);
     }
 
+    @Override
+    public void reimburseWithBank(String itemName, BigDecimal amount, String receiptUrl, String bank, String accountNumber) {
+        Reimbursement reimbursement = new Reimbursement(itemName, amount, receiptUrl, bank, accountNumber);
+        reimbursementGateway.save(reimbursement);
+        receiptGateway.save(receiptUrl);
+    }
 }
